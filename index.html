@@ -1,13 +1,96 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
+  <!-- Primary Meta -->
+  <meta name="description" content="在线色彩工具。HEX/RGB/HSL/HSV/CMYK互转、调色板生成、渐变色CSS生成。设计师和开发者的色彩工具箱。">
+  <meta name="keywords" content="color picker, hex to rgb, rgb to hex, color palette generator, gradient generator, 颜色转换, 调色板, 渐变色">
+  <meta name="author" content="Dudu Tools">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://color-tool.vercel.app/">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Color Tool - 免费在线工具">
+  <meta property="og:description" content="在线色彩工具。HEX/RGB/HSL/HSV/CMYK互转、调色板生成、渐变色CSS生成。设计师和开发者的色彩工具箱。">
+  <meta property="og:url" content="https://color-tool.vercel.app/">
+  <meta property="og:image" content="https://color-tool.vercel.app/og-image.png">
+  <meta property="og:site_name" content="Color Tool">
+  <meta property="og:locale" content="zh_CN">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Color Tool - 免费在线工具">
+  <meta name="twitter:description" content="在线色彩工具。HEX/RGB/HSL/HSV/CMYK互转、调色板生成、渐变色CSS生成。设计师和开发者的色彩工具箱。">
+  <meta name="twitter:image" content="https://color-tool.vercel.app/og-image.png">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Color Tool - 色彩工具 HEX/RGB/HSL 转换调色板渐变生成器</title>
-  <meta name="description" content="免费在线色彩工具。颜色格式转换(HEX/RGB/HSL/HSV/CMYK)、调色板生成、渐变色生成器。浏览器端处理。">
-  <meta name="keywords" content="color picker, hex to rgb, rgb to hex, color palette generator, gradient generator, hsl converter, online color tool">
-  <link rel="canonical" href="https://color-tool.vercel.app/">
+  <title>Color Tool - 免费在线工具 | 浏览器端处理 · 隐私安全</title>
   <link rel="stylesheet" href="css/style.css">
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Color Tool",
+  "description": "在线色彩工具。HEX/RGB/HSL/HSV/CMYK互转、调色板生成、渐变色CSS生成。设计师和开发者的色彩工具箱。",
+  "url": "https://color-tool.vercel.app/",
+  "applicationCategory": "DeveloperApplication",
+  "operatingSystem": "All",
+  "browserRequirements": "Requires JavaScript",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "featureList": [
+    "HEX/RGB/HSL/HSV/CMYK实时互转",
+    "8种配色方案生成调色板",
+    "线性/径向渐变色CSS生成",
+    "颜色对比度与WCAG评级",
+    "导出CSS变量或PNG图片",
+    "近似颜色快速切换"
+  ]
+}
+  </script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Color Tool 支持哪些颜色格式？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "支持 HEX、RGB、HSL、HSV、CMYK 五种颜色格式的实时互转。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "如何生成调色板？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "选择一个基础颜色，再选择配色方案（单色、互补、邻近、三等分等），工具会自动生成和谐配色。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "渐变色代码怎么用？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "选择颜色和方向后，工具会生成 CSS gradient 代码，可直接复制到项目中使用。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "颜色无障碍评级是什么？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "工具会计算颜色与黑白文字的对比度，并给出 WCAG AA/AAA 标准评级，帮助确保无障碍设计。"
+      }
+    }
+  ]
+}
+  </script>
 </head>
 <body>
   <header class="header">
