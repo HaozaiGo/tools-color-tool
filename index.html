@@ -1,103 +1,116 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en">
 <head>
   <!-- Primary Meta -->
-  <meta name="description" content="在线色彩工具。HEX/RGB/HSL/HSV/CMYK互转、调色板生成、渐变色CSS生成。设计师和开发者的色彩工具箱。">
-  <meta name="keywords" content="color picker, hex to rgb, rgb to hex, color palette generator, gradient generator, 颜色转换, 调色板, 渐变色">
+  <meta name="description" content="Convert HEX, RGB, HSL, HSV, and CMYK colors online. Generate palettes, check contrast, and create CSS gradients in your browser.">
+  <meta name="keywords" content="color converter, hex to rgb, rgb to hex, color palette generator, css gradient generator, color contrast checker">
   <meta name="author" content="Dudu Tools">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://color-tool.vercel.app/">
-
-  <!-- Open Graph -->
+  <link rel="alternate" hreflang="en" href="https://color-tool.vercel.app/">
+  <link rel="alternate" hreflang="zh-CN" href="https://color-tool.vercel.app/zh/">
+  <link rel="alternate" hreflang="x-default" href="https://color-tool.vercel.app/">
+<!-- Open Graph -->
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Color Tool - 免费在线工具">
-  <meta property="og:description" content="在线色彩工具。HEX/RGB/HSL/HSV/CMYK互转、调色板生成、渐变色CSS生成。设计师和开发者的色彩工具箱。">
+  <meta property="og:title" content="Color Converter, Palette Generator and CSS Gradient Tool">
+  <meta property="og:description" content="Convert HEX, RGB, HSL, HSV, and CMYK colors online. Generate palettes, check contrast, and create CSS gradients in your browser.">
   <meta property="og:url" content="https://color-tool.vercel.app/">
-  <meta property="og:image" content="https://color-tool.vercel.app/og-image.png">
-  <meta property="og:site_name" content="Color Tool">
-  <meta property="og:locale" content="zh_CN">
+<meta property="og:site_name" content="Color Tool">
+  <meta property="og:locale" content="en_US">
 
   <!-- Twitter Card -->
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Color Tool - 免费在线工具">
-  <meta name="twitter:description" content="在线色彩工具。HEX/RGB/HSL/HSV/CMYK互转、调色板生成、渐变色CSS生成。设计师和开发者的色彩工具箱。">
-  <meta name="twitter:image" content="https://color-tool.vercel.app/og-image.png">
-  <meta charset="UTF-8">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Color Converter, Palette Generator and CSS Gradient Tool">
+  <meta name="twitter:description" content="Convert HEX, RGB, HSL, HSV, and CMYK colors online. Generate palettes, check contrast, and create CSS gradients in your browser.">
+<meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Color Tool - 免费在线工具 | 浏览器端处理 · 隐私安全</title>
+  <title>Color Converter, Palette Generator and CSS Gradient Tool</title>
   <link rel="stylesheet" href="css/style.css">
   <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "WebApplication",
   "name": "Color Tool",
-  "description": "在线色彩工具。HEX/RGB/HSL/HSV/CMYK互转、调色板生成、渐变色CSS生成。设计师和开发者的色彩工具箱。",
+  "description": "Convert HEX, RGB, HSL, HSV, and CMYK colors online. Generate palettes, check contrast, and create CSS gradients in your browser.",
   "url": "https://color-tool.vercel.app/",
-  "applicationCategory": "DeveloperApplication",
+  "inLanguage": "en",
+  "applicationCategory": "DesignApplication",
   "operatingSystem": "All",
   "browserRequirements": "Requires JavaScript",
+  "isAccessibleForFree": true,
   "offers": {
     "@type": "Offer",
     "price": "0",
     "priceCurrency": "USD"
   },
   "featureList": [
-    "HEX/RGB/HSL/HSV/CMYK实时互转",
-    "8种配色方案生成调色板",
-    "线性/径向渐变色CSS生成",
-    "颜色对比度与WCAG评级",
-    "导出CSS变量或PNG图片",
-    "近似颜色快速切换"
-  ]
+    "Convert HEX, RGB, HSL, HSV, and CMYK",
+    "Generate harmony-based palettes",
+    "Create linear and radial CSS gradients",
+    "Check text contrast against black and white",
+    "Export CSS variables",
+    "Explore nearby color variations"
+  ],
+  "publisher": {
+    "@type": "Organization",
+    "name": "Dudu Tools"
+  }
 }
   </script>
   <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "FAQPage",
+  "inLanguage": "en",
   "mainEntity": [
     {
       "@type": "Question",
-      "name": "Color Tool 支持哪些颜色格式？",
+      "name": "Which color formats are supported?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "支持 HEX、RGB、HSL、HSV、CMYK 五种颜色格式的实时互转。"
+        "text": "The tool supports HEX, RGB, HSL, HSV, and CMYK conversion."
       }
     },
     {
       "@type": "Question",
-      "name": "如何生成调色板？",
+      "name": "Can I generate a color palette?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "选择一个基础颜色，再选择配色方案（单色、互补、邻近、三等分等），工具会自动生成和谐配色。"
+        "text": "Yes. Pick a base color and choose a harmony such as monochromatic, complementary, analogous, triadic, or tetradic."
       }
     },
     {
       "@type": "Question",
-      "name": "渐变色代码怎么用？",
+      "name": "Can I copy CSS gradient code?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "选择颜色和方向后，工具会生成 CSS gradient 代码，可直接复制到项目中使用。"
+        "text": "Yes. Choose colors and direction, then copy the generated CSS gradient."
       }
     },
     {
       "@type": "Question",
-      "name": "颜色无障碍评级是什么？",
+      "name": "Does it help with accessibility?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "工具会计算颜色与黑白文字的对比度，并给出 WCAG AA/AAA 标准评级，帮助确保无障碍设计。"
+        "text": "Yes. The tool calculates contrast against black and white text and provides WCAG-style guidance."
       }
     }
   ]
 }
   </script>
+
+  <!-- Vercel Analytics -->
+  <script defer src="/_vercel/insights/script.js"></script>
+  <!-- Vercel Speed Insights -->
+  <script defer src="/_vercel/speed-insights/script.js"></script>
 </head>
 <body>
   <header class="header">
     <div class="container">
       <div class="header-inner">
         <h1 class="logo">🎨 Color Tool</h1>
-        <p class="tagline">颜色格式转换 · 调色板 · 渐变色生成 · 浏览器端处理</p>
+        <p class="tagline">Color conversion · palette generation · CSS gradients · browser-based processing</p>
+        <nav class="language-switcher" aria-label="Language"><a class="active" href="./" lang="en">EN</a><a class="" href="zh/" lang="zh-CN">中文</a></nav>
       </div>
     </div>
   </header>
@@ -107,15 +120,15 @@
     <nav class="tabs" role="tablist">
       <button class="tab active" role="tab" aria-selected="true" data-tab="converter" tabindex="0">
         <span class="tab-icon">🔄</span>
-        <span class="tab-label">格式转换</span>
+        <span class="tab-label">Converter</span>
       </button>
       <button class="tab" role="tab" aria-selected="false" data-tab="palette" tabindex="-1">
         <span class="tab-icon">🎨</span>
-        <span class="tab-label">调色板</span>
+        <span class="tab-label">Palette</span>
       </button>
       <button class="tab" role="tab" aria-selected="false" data-tab="gradient" tabindex="-1">
         <span class="tab-icon">🌈</span>
-        <span class="tab-label">渐变色</span>
+        <span class="tab-label">Gradient</span>
       </button>
     </nav>
 
@@ -130,7 +143,7 @@
           <div class="color-picker-row">
             <label class="color-picker-wrap">
               <input type="color" id="color-picker" value="#3b82f6">
-              <span class="picker-label">选择颜色</span>
+              <span class="picker-label">Pick color</span>
             </label>
           </div>
         </div>
@@ -177,11 +190,11 @@
         <!-- Color Info -->
         <div class="info-section">
           <div class="color-scheme-preview">
-            <h3>近似颜色</h3>
+            <h3>Nearby colors</h3>
             <div id="similar-colors" class="similar-colors"></div>
           </div>
           <div class="color-details">
-            <h3>颜色信息</h3>
+            <h3>Color info</h3>
             <div id="color-info" class="color-info-grid"></div>
           </div>
         </div>
@@ -193,24 +206,24 @@
       <div class="panel-body">
         <div class="palette-controls">
           <div class="control-row">
-            <label for="base-color-picker">基础颜色</label>
+            <label for="base-color-picker">Base color</label>
             <input type="color" id="base-color-picker" value="#3b82f6">
           </div>
           <div class="control-row">
-            <label for="palette-type">调色板类型</label>
+            <label for="palette-type">PaletteType</label>
             <select id="palette-type">
-              <option value="monochromatic">单色系</option>
-              <option value="complementary">互补色</option>
-              <option value="analogous" selected>邻近色</option>
-              <option value="triadic">三等分色</option>
-              <option value="tetradic">四等分色</option>
-              <option value="split-complementary">分裂互补色</option>
-              <option value="shades">暗色调</option>
-              <option value="tints">亮色调</option>
+              <option value="monochromatic">Monochromatic</option>
+              <option value="complementary">Complementary</option>
+              <option value="analogous" selected>Analogous</option>
+              <option value="triadic">Triadic</option>
+              <option value="tetradic">Tetradic</option>
+              <option value="split-complementary">Split complementary</option>
+              <option value="shades">Dark shades</option>
+              <option value="tints">Light tints</option>
             </select>
           </div>
           <div class="control-row">
-            <label for="palette-count">颜色数量</label>
+            <label for="palette-count">Color count</label>
             <select id="palette-count">
               <option value="5">5</option>
               <option value="6">6</option>
@@ -221,11 +234,11 @@
           </div>
         </div>
         <div id="palette-result" class="palette-result">
-          <div class="placeholder-text">选择颜色和类型后生成调色板</div>
+          <div class="placeholder-text">Choose a color and palette type to generate a palette</div>
         </div>
         <div class="palette-actions">
-          <button class="btn btn-primary" onclick="exportPaletteCSS()">📋 导出 CSS 变量</button>
-          <button class="btn btn-secondary" onclick="exportPaletteImage()">⬇ 导出为图片</button>
+          <button class="btn btn-primary" onclick="exportPaletteCSS()">Export CSS variables</button>
+          <button class="btn btn-secondary" onclick="exportPaletteImage()">Export image</button>
         </div>
       </div>
     </section>
@@ -242,51 +255,74 @@
         <div class="gradient-controls">
           <div class="gradient-colors-row">
             <div class="gradient-stop" id="gradient-stop-0">
-              <label>颜色 1</label>
+              <label>Color 1</label>
               <input type="color" value="#667eea">
             </div>
             <div class="gradient-stop" id="gradient-stop-1">
-              <label>颜色 2</label>
+              <label>Color 2</label>
               <input type="color" value="#764ba2">
             </div>
           </div>
           <div class="gradient-options">
             <div class="control-row">
-              <label>方向</label>
+              <label>Direction</label>
               <select id="gradient-direction">
-                <option value="to right">→ 向右</option>
-                <option value="to left">← 向左</option>
-                <option value="to bottom">↓ 向下</option>
-                <option value="to top">↑ 向上</option>
-                <option value="to bottom right">↘ 右下</option>
-                <option value="to top left">↖ 左上</option>
+                <option value="to right">-> Right</option>
+                <option value="to left"><- Left</option>
+                <option value="to bottom">Down</option>
+                <option value="to top">Up</option>
+                <option value="to bottom right">Down right</option>
+                <option value="to top left">Up left</option>
                 <option value="135deg" selected>135°</option>
                 <option value="45deg">45°</option>
-                <option value="circle">圆形</option>
+                <option value="circle">Circle</option>
               </select>
             </div>
             <div class="control-row">
-              <label>类型</label>
+              <label>Type</label>
               <select id="gradient-type">
-                <option value="linear" selected>线性渐变</option>
-                <option value="radial">径向渐变</option>
+                <option value="linear" selected>Linear gradient</option>
+                <option value="radial">Radial gradient</option>
               </select>
             </div>
           </div>
           <div class="gradient-actions">
-            <button class="btn btn-sm" onclick="addGradientStop()">➕ 添加颜色</button>
-            <button class="btn btn-sm" onclick="randomGradient()">🎲 随机</button>
-            <button class="btn btn-sm" onclick="copyGradientCSS()">📋 复制 CSS</button>
+            <button class="btn btn-sm" onclick="addGradientStop()">Add color</button>
+            <button class="btn btn-sm" onclick="randomGradient()">Random</button>
+            <button class="btn btn-sm" onclick="copyGradientCSS()">Copy CSS</button>
           </div>
         </div>
+      </div>
+    </section>
+    <section class="seo-content" aria-label="Tool guide and frequently asked questions">
+      <div class="seo-block">
+        <h2>What is Color Tool?</h2>
+        <p>A color toolbox for converting color formats, generating palettes, checking contrast, and building CSS gradients for design and development work.</p>
+      </div>
+      <div class="seo-grid">
+        <div class="seo-block">
+          <h2>Key Features</h2>
+          <ul><li>Convert HEX, RGB, HSL, HSV, and CMYK</li><li>Generate harmony-based palettes</li><li>Create linear and radial CSS gradients</li><li>Check text contrast against black and white</li><li>Export CSS variables</li><li>Explore nearby color variations</li></ul>
+        </div>
+        <div class="seo-block">
+          <h2>Common Use Cases</h2>
+          <ul><li>Translate colors between design and code</li><li>Create UI palettes</li><li>Generate CSS gradient snippets</li><li>Check accessible text contrast</li></ul>
+        </div>
+      </div>
+      <div class="seo-block faq-list">
+        <h2>Frequently Asked Questions</h2>
+        <details><summary>Which color formats are supported?</summary><p>The tool supports HEX, RGB, HSL, HSV, and CMYK conversion.</p></details>
+        <details><summary>Can I generate a color palette?</summary><p>Yes. Pick a base color and choose a harmony such as monochromatic, complementary, analogous, triadic, or tetradic.</p></details>
+        <details><summary>Can I copy CSS gradient code?</summary><p>Yes. Choose colors and direction, then copy the generated CSS gradient.</p></details>
+        <details><summary>Does it help with accessibility?</summary><p>Yes. The tool calculates contrast against black and white text and provides WCAG-style guidance.</p></details>
       </div>
     </section>
   </main>
 
   <footer class="footer">
     <div class="container">
-      <p>🎨 Color Tool — 所有处理在浏览器端完成，无需上传</p>
-      <p class="footer-small">纯前端工具 · 零服务端 · 隐私安全</p>
+      <p>🎨 Color Tool — All processing runs in your browser. No uploads required.</p>
+      <p class="footer-small">Frontend-only tool · no server storage · privacy-first</p>
     </div>
   </footer>
 
