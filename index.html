@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Color Tool - 色彩工具 HEX/RGB/HSL 转换调色板渐变生成器</title>
+  <meta name="description" content="免费在线色彩工具。颜色格式转换(HEX/RGB/HSL/HSV/CMYK)、调色板生成、渐变色生成器。浏览器端处理。">
+  <meta name="keywords" content="color picker, hex to rgb, rgb to hex, color palette generator, gradient generator, hsl converter, online color tool">
+  <link rel="canonical" href="https://color-tool.vercel.app/">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="header">
+    <div class="container">
+      <div class="header-inner">
+        <h1 class="logo">🎨 Color Tool</h1>
+        <p class="tagline">颜色格式转换 · 调色板 · 渐变色生成 · 浏览器端处理</p>
+      </div>
+    </div>
+  </header>
+
+  <main class="main container">
+    <!-- Tab Navigation -->
+    <nav class="tabs" role="tablist">
+      <button class="tab active" role="tab" aria-selected="true" data-tab="converter" tabindex="0">
+        <span class="tab-icon">🔄</span>
+        <span class="tab-label">格式转换</span>
+      </button>
+      <button class="tab" role="tab" aria-selected="false" data-tab="palette" tabindex="-1">
+        <span class="tab-icon">🎨</span>
+        <span class="tab-label">调色板</span>
+      </button>
+      <button class="tab" role="tab" aria-selected="false" data-tab="gradient" tabindex="-1">
+        <span class="tab-icon">🌈</span>
+        <span class="tab-label">渐变色</span>
+      </button>
+    </nav>
+
+    <!-- === Tab: Converter === -->
+    <section class="tab-panel active" id="panel-converter" role="tabpanel">
+      <div class="panel-body">
+        <!-- Color Preview -->
+        <div class="preview-section">
+          <div id="color-preview" class="color-preview">
+            <span id="color-hex-display" class="hex-display">#3B82F6</span>
+          </div>
+          <div class="color-picker-row">
+            <label class="color-picker-wrap">
+              <input type="color" id="color-picker" value="#3b82f6">
+              <span class="picker-label">选择颜色</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- Color Values -->
+        <div class="values-section">
+          <div class="value-card">
+            <div class="value-label">HEX</div>
+            <div class="value-row">
+              <input type="text" id="val-hex" class="value-input mono" value="#3B82F6" spellcheck="false">
+              <button class="btn btn-sm" onclick="copyValue('val-hex')">📋</button>
+            </div>
+          </div>
+          <div class="value-card">
+            <div class="value-label">RGB</div>
+            <div class="value-row">
+              <input type="text" id="val-rgb" class="value-input mono" value="rgb(59, 130, 246)" spellcheck="false">
+              <button class="btn btn-sm" onclick="copyValue('val-rgb')">📋</button>
+            </div>
+          </div>
+          <div class="value-card">
+            <div class="value-label">HSL</div>
+            <div class="value-row">
+              <input type="text" id="val-hsl" class="value-input mono" value="hsl(217, 91%, 60%)" spellcheck="false">
+              <button class="btn btn-sm" onclick="copyValue('val-hsl')">📋</button>
+            </div>
+          </div>
+          <div class="value-card">
+            <div class="value-label">HSV</div>
+            <div class="value-row">
+              <input type="text" id="val-hsv" class="value-input mono" value="hsv(217, 76%, 96%)" spellcheck="false">
+              <button class="btn btn-sm" onclick="copyValue('val-hsv')">📋</button>
+            </div>
+          </div>
+          <div class="value-card">
+            <div class="value-label">CMYK</div>
+            <div class="value-row">
+              <input type="text" id="val-cmyk" class="value-input mono" value="cmyk(76%, 47%, 0%, 4%)" spellcheck="false">
+              <button class="btn btn-sm" onclick="copyValue('val-cmyk')">📋</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Color Info -->
+        <div class="info-section">
+          <div class="color-scheme-preview">
+            <h3>近似颜色</h3>
+            <div id="similar-colors" class="similar-colors"></div>
+          </div>
+          <div class="color-details">
+            <h3>颜色信息</h3>
+            <div id="color-info" class="color-info-grid"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- === Tab: Palette === -->
+    <section class="tab-panel" id="panel-palette" role="tabpanel" hidden>
+      <div class="panel-body">
+        <div class="palette-controls">
+          <div class="control-row">
+            <label for="base-color-picker">基础颜色</label>
+            <input type="color" id="base-color-picker" value="#3b82f6">
+          </div>
+          <div class="control-row">
+            <label for="palette-type">调色板类型</label>
+            <select id="palette-type">
+              <option value="monochromatic">单色系</option>
+              <option value="complementary">互补色</option>
+              <option value="analogous" selected>邻近色</option>
+              <option value="triadic">三等分色</option>
+              <option value="tetradic">四等分色</option>
+              <option value="split-complementary">分裂互补色</option>
+              <option value="shades">暗色调</option>
+              <option value="tints">亮色调</option>
+            </select>
+          </div>
+          <div class="control-row">
+            <label for="palette-count">颜色数量</label>
+            <select id="palette-count">
+              <option value="5">5</option>
+              <option value="6">6</option>
+              <option value="8" selected>8</option>
+              <option value="10">10</option>
+              <option value="12">12</option>
+            </select>
+          </div>
+        </div>
+        <div id="palette-result" class="palette-result">
+          <div class="placeholder-text">选择颜色和类型后生成调色板</div>
+        </div>
+        <div class="palette-actions">
+          <button class="btn btn-primary" onclick="exportPaletteCSS()">📋 导出 CSS 变量</button>
+          <button class="btn btn-secondary" onclick="exportPaletteImage()">⬇ 导出为图片</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- === Tab: Gradient === -->
+    <section class="tab-panel" id="panel-gradient" role="tabpanel" hidden>
+      <div class="panel-body">
+        <div class="gradient-preview" id="gradient-preview">
+          <div class="gradient-code-display">
+            <span id="gradient-css-code">background: linear-gradient(135deg, #667eea, #764ba2);</span>
+          </div>
+        </div>
+        
+        <div class="gradient-controls">
+          <div class="gradient-colors-row">
+            <div class="gradient-stop" id="gradient-stop-0">
+              <label>颜色 1</label>
+              <input type="color" value="#667eea">
+            </div>
+            <div class="gradient-stop" id="gradient-stop-1">
+              <label>颜色 2</label>
+              <input type="color" value="#764ba2">
+            </div>
+          </div>
+          <div class="gradient-options">
+            <div class="control-row">
+              <label>方向</label>
+              <select id="gradient-direction">
+                <option value="to right">→ 向右</option>
+                <option value="to left">← 向左</option>
+                <option value="to bottom">↓ 向下</option>
+                <option value="to top">↑ 向上</option>
+                <option value="to bottom right">↘ 右下</option>
+                <option value="to top left">↖ 左上</option>
+                <option value="135deg" selected>135°</option>
+                <option value="45deg">45°</option>
+                <option value="circle">圆形</option>
+              </select>
+            </div>
+            <div class="control-row">
+              <label>类型</label>
+              <select id="gradient-type">
+                <option value="linear" selected>线性渐变</option>
+                <option value="radial">径向渐变</option>
+              </select>
+            </div>
+          </div>
+          <div class="gradient-actions">
+            <button class="btn btn-sm" onclick="addGradientStop()">➕ 添加颜色</button>
+            <button class="btn btn-sm" onclick="randomGradient()">🎲 随机</button>
+            <button class="btn btn-sm" onclick="copyGradientCSS()">📋 复制 CSS</button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <p>🎨 Color Tool — 所有处理在浏览器端完成，无需上传</p>
+      <p class="footer-small">纯前端工具 · 零服务端 · 隐私安全</p>
+    </div>
+  </footer>
+
+  <script src="js/color-utils.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
