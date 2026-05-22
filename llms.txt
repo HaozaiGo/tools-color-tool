@@ -1,0 +1,44 @@
+# Color Tool
+
+> A color toolbox for converting color formats, generating palettes, checking contrast, and building CSS gradients for design and development work.
+
+Canonical URL: https://color.toolkitbox.org/
+Chinese URL: https://color.toolkitbox.org/zh/
+
+## What it does
+
+- Convert HEX, RGB, HSL, HSV, and CMYK
+- Generate harmony-based palettes
+- Create linear and radial CSS gradients
+- Check text contrast against black and white
+- Export CSS variables
+- Explore nearby color variations
+
+## Best for
+
+- Translate colors between design and code
+- Create UI palettes
+- Generate CSS gradient snippets
+- Check accessible text contrast
+
+## Privacy
+
+This tool is designed for browser-based processing whenever possible. User-provided content is not stored by ToolkitBox.
+
+## FAQ
+
+### Which color formats are supported?
+
+The tool supports HEX, RGB, HSL, HSV, and CMYK conversion.
+
+### Can I generate a color palette?
+
+Yes. Pick a base color and choose a harmony such as monochromatic, complementary, analogous, triadic, or tetradic.
+
+### Can I copy CSS gradient code?
+
+Yes. Choose colors and direction, then copy the generated CSS gradient.
+
+### Does it help with accessibility?
+
+Yes. The tool calculates contrast against black and white text and provides WCAG-style guidance.
