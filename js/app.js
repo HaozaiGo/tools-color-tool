@@ -1,5 +1,44 @@
 /* === Color Tool - App Logic === */
 
+const isZh = document.documentElement.lang.toLowerCase().startsWith('zh');
+const TEXT = isZh ? {
+  invalidFormat: '❌ 格式错误，请检查输入',
+  luminance: '亮度',
+  hue: '色相',
+  saturation: '饱和度',
+  lightness: '明度',
+  whiteContrast: '白字对比度',
+  blackContrast: '黑字对比度',
+  wcagAaBody: 'WCAG AA(正文)',
+  generatePaletteFirst: '❌ 请先生成调色板',
+  cssVarsCopied: '✅ CSS 变量已复制',
+  copyFailed: '❌ 复制失败',
+  paletteImageDownloaded: '✅ 调色板图片已下载',
+  maxGradientStops: '最多 6 种颜色',
+  colorStop: '颜色',
+  cssCopied: '✅ CSS 已复制',
+  copied: '✅ 已复制',
+  hexCopied: hex => `✅ ${hex} 已复制`,
+} : {
+  invalidFormat: '❌ Invalid format. Please check your input.',
+  luminance: 'Luminance',
+  hue: 'Hue',
+  saturation: 'Saturation',
+  lightness: 'Lightness',
+  whiteContrast: 'Contrast with white',
+  blackContrast: 'Contrast with black',
+  wcagAaBody: 'WCAG AA (body)',
+  generatePaletteFirst: '❌ Generate a palette first',
+  cssVarsCopied: '✅ CSS variables copied',
+  copyFailed: '❌ Copy failed',
+  paletteImageDownloaded: '✅ Palette image downloaded',
+  maxGradientStops: 'Up to 6 colors',
+  colorStop: 'Color',
+  cssCopied: '✅ CSS copied',
+  copied: '✅ Copied',
+  hexCopied: hex => `✅ ${hex} copied`,
+};
+
 document.addEventListener('DOMContentLoaded', () => {
   initTabs();
   initConverter();
@@ -120,7 +159,7 @@ function parseInput(id) {
     }
     if (hex) updateFromHex(hex);
   } catch (e) {
-    showToast('❌ 格式错误，请检查输入');
+    showToast(TEXT.invalidFormat);
   }
 }
 
@@ -148,13 +187,13 @@ function updateColorInfo(rgb, hex) {
 
   const container = document.getElementById('color-info');
   container.innerHTML = `
-    <div class="info-item"><span>亮度</span><span>${lum}</span></div>
-    <div class="info-item"><span>色相</span><span>${hsl.h}°</span></div>
-    <div class="info-item"><span>饱和度</span><span>${hsl.s}%</span></div>
-    <div class="info-item"><span>明度</span><span>${hsl.l}%</span></div>
-    <div class="info-item"><span>白字对比度</span><span>${contrastWhite}:1</span></div>
-    <div class="info-item"><span>黑字对比度</span><span>${contrast}:1</span></div>
-    <div class="info-item"><span>WCAG AA(正文)</span><span>${wcagAA}</span></div>
+    <div class="info-item"><span>${TEXT.luminance}</span><span>${lum}</span></div>
+    <div class="info-item"><span>${TEXT.hue}</span><span>${hsl.h}°</span></div>
+    <div class="info-item"><span>${TEXT.saturation}</span><span>${hsl.s}%</span></div>
+    <div class="info-item"><span>${TEXT.lightness}</span><span>${hsl.l}%</span></div>
+    <div class="info-item"><span>${TEXT.whiteContrast}</span><span>${contrastWhite}:1</span></div>
+    <div class="info-item"><span>${TEXT.blackContrast}</span><span>${contrast}:1</span></div>
+    <div class="info-item"><span>${TEXT.wcagAaBody}</span><span>${wcagAA}</span></div>
     <div class="info-item"><span>WCAG AAA</span><span>${wcagAAA}</span></div>
   `;
 }
@@ -187,19 +226,19 @@ function updatePalette() {
 
 function exportPaletteCSS() {
   const swatches = document.querySelectorAll('.palette-swatch');
-  if (!swatches.length) { showToast('❌ 请先生成调色板'); return; }
+  if (!swatches.length) { showToast(TEXT.generatePaletteFirst); return; }
   let css = ':root {\n';
   swatches.forEach((s, i) => {
     const hex = s.querySelector('.palette-code')?.textContent || '';
     css += `  --color-${i + 1}: ${hex};\n`;
   });
   css += '}';
-  navigator.clipboard.writeText(css).then(() => showToast('✅ CSS 变量已复制')).catch(() => showToast('❌ 复制失败'));
+  navigator.clipboard.writeText(css).then(() => showToast(TEXT.cssVarsCopied)).catch(() => showToast(TEXT.copyFailed));
 }
 
 function exportPaletteImage() {
   const swatches = document.querySelectorAll('.palette-swatch');
-  if (!swatches.length) { showToast('❌ 请先生成调色板'); return; }
+  if (!swatches.length) { showToast(TEXT.generatePaletteFirst); return; }
 
   const canvas = document.createElement('canvas');
   const h = 60, count = swatches.length;
@@ -222,7 +261,7 @@ function exportPaletteImage() {
   link.download = 'palette.png';
   link.href = canvas.toDataURL();
   link.click();
-  showToast('✅ 调色板图片已下载');
+  showToast(TEXT.paletteImageDownloaded);
 }
 
 /* ======== GRADIENT ======== */
@@ -258,7 +297,7 @@ function updateGradientPreview() {
 function addGradientStop() {
   const container = document.querySelector('.gradient-colors-row');
   const existing = container.querySelectorAll('.gradient-stop');
-  if (existing.length >= 6) { showToast('最多 6 种颜色'); return; }
+  if (existing.length >= 6) { showToast(TEXT.maxGradientStops); return; }
 
   const lastColor = existing[existing.length - 1]?.querySelector('input')?.value || '#000000';
   // Generate a slightly different color
@@ -270,7 +309,7 @@ function addGradientStop() {
 
   const div = document.createElement('div');
   div.className = 'gradient-stop';
-  div.innerHTML = `<label>颜色 ${existing.length + 1}</label>
+  div.innerHTML = `<label>${TEXT.colorStop} ${existing.length + 1}</label>
     <input type="color" value="${newColor}">`;
   
   const input = div.querySelector('input');
@@ -288,17 +327,17 @@ function randomGradient() {
 
 function copyGradientCSS() {
   const code = document.getElementById('gradient-css-code').textContent;
-  navigator.clipboard.writeText(code).then(() => showToast('✅ CSS 已复制')).catch(() => showToast('❌ 复制失败'));
+  navigator.clipboard.writeText(code).then(() => showToast(TEXT.cssCopied)).catch(() => showToast(TEXT.copyFailed));
 }
 
 /* ======== Utilities ======== */
 function copyValue(id) {
   const val = document.getElementById(id).value;
-  navigator.clipboard.writeText(val).then(() => showToast('✅ 已复制'));
+  navigator.clipboard.writeText(val).then(() => showToast(TEXT.copied));
 }
 
 function copyHex(hex) {
-  navigator.clipboard.writeText(hex).then(() => showToast(`✅ ${hex} 已复制`));
+  navigator.clipboard.writeText(hex).then(() => showToast(TEXT.hexCopied(hex)));
 }
 
 function showToast(msg) {
