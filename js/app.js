@@ -121,7 +121,7 @@ function parseInput(id) {
         break;
       }
       case 'val-rgb': {
-        const m = val.match(/rgb\(\s*(\d+)\s*,\s*(\d+)\s*,\s*(\d+)\s*\)/i);
+        const m = val.match(/^rgb\(\s*(\d+)\s*,\s*(\d+)\s*,\s*(\d+)\s*\)$/i);
         if (!m) throw new Error('Invalid RGB');
         const r = Math.max(0, Math.min(255, parseInt(m[1])));
         const g = Math.max(0, Math.min(255, parseInt(m[2])));
@@ -130,26 +130,26 @@ function parseInput(id) {
         break;
       }
       case 'val-hsl': {
-        const m = val.match(/hsl\(\s*(\d+)\s*,\s*(\d+)%\s*,\s*(\d+)%\s*\)/i);
-        if (!m) throw new Error('Invalid HSL');
-        const c = hslToRgb(parseInt(m[1]), parseInt(m[2]), parseInt(m[3]));
+        const m = val.match(/^hsl\(\s*(-?\d+(?:\.\d+)?)\s*,\s*(\d+(?:\.\d+)?)%\s*,\s*(\d+(?:\.\d+)?)%\s*\)$/i);
+        if (!m || Number(m[2]) > 100 || Number(m[3]) > 100) throw new Error('Invalid HSL');
+        const c = hslToRgb(Number(m[1]), Number(m[2]), Number(m[3]));
         hex = rgbToHex(c.r, c.g, c.b);
         break;
       }
       case 'val-hsv': {
-        const m = val.match(/hsv\(\s*(\d+)\s*,\s*(\d+)%\s*,\s*(\d+)%\s*\)/i);
-        if (!m) throw new Error('Invalid HSV');
-        const c = hsvToRgb(parseInt(m[1]), parseInt(m[2]), parseInt(m[3]));
+        const m = val.match(/^hsv\(\s*(-?\d+(?:\.\d+)?)\s*,\s*(\d+(?:\.\d+)?)%\s*,\s*(\d+(?:\.\d+)?)%\s*\)$/i);
+        if (!m || Number(m[2]) > 100 || Number(m[3]) > 100) throw new Error('Invalid HSV');
+        const c = hsvToRgb(Number(m[1]), Number(m[2]), Number(m[3]));
         hex = rgbToHex(c.r, c.g, c.b);
         break;
       }
       case 'val-cmyk': {
-        const m = val.match(/cmyk\(\s*(\d+)%\s*,\s*(\d+)%\s*,\s*(\d+)%\s*,\s*(\d+)%\s*\)/i);
-        if (!m) throw new Error('Invalid CMYK');
-        const c = 1 - parseInt(m[1]) / 100;
-        const y = 1 - parseInt(m[2]) / 100;
-        const mk = 1 - parseInt(m[3]) / 100;
-        const k = 1 - parseInt(m[4]) / 100;
+        const m = val.match(/^cmyk\(\s*(\d+(?:\.\d+)?)%\s*,\s*(\d+(?:\.\d+)?)%\s*,\s*(\d+(?:\.\d+)?)%\s*,\s*(\d+(?:\.\d+)?)%\s*\)$/i);
+        if (!m || m.slice(1).some(v => Number(v) > 100)) throw new Error('Invalid CMYK');
+        const c = Number(m[1]) / 100;
+        const y = Number(m[2]) / 100;
+        const mk = Number(m[3]) / 100;
+        const k = Number(m[4]) / 100;
         const r = Math.round(255 * (1 - c) * (1 - k));
         const g = Math.round(255 * (1 - y) * (1 - k));
         const b = Math.round(255 * (1 - mk) * (1 - k));

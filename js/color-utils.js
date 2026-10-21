@@ -35,6 +35,7 @@ function rgbToHsl(r, g, b) {
 }
 
 function hslToRgb(h, s, l) {
+  h = ((h % 360) + 360) % 360;
   h /= 360; s /= 100; l /= 100;
   let r, g, b;
   if (s === 0) {
@@ -78,6 +79,7 @@ function rgbToHsv(r, g, b) {
 }
 
 function hsvToRgb(h, s, v) {
+  h = ((h % 360) + 360) % 360;
   h /= 360; s /= 100; v /= 100;
   const i = Math.floor(h * 6);
   const f = h * 6 - i;
